@@ -52,7 +52,7 @@ for item in items:
                    market_cap=elements[3].text.strip(),
                    debt=elements[4].text.strip(),
                    dividend=elements[5].text.strip(),
-                   promoter=elements[6].text.strip(),
+                   promoter=convert_to_int(elements[6].text.strip()),
                    price_to_earnings=str(price_to_earnings) +
                    ' ('+str(price_to_earnings_3y)+', ' + str(price_to_earnings_5y)+' )',
                    price_to_earnings_bg=price_to_earnings_bg,

@@ -11,7 +11,7 @@
             <th>Curr Price</th>
             <th>Debt</th>
             <th>Dividend</th>
-            <th>Promiter</th>
+            <th>Promoter</th>
             <th>P/E (3yr,5yr)</th>
             <th>ROE (3yr, 5yr)</th>
             <th>P/S</th>
@@ -34,12 +34,12 @@
             {% if item.from_52w_high == '52w HIGH' %}
           		<td align="center" style="background-color:green">{{item.from_52w_high}}</td>
           	{% else %}
-          		<td align="center">{{item.from_52w_high}}</td>
+          		<td align="center">-{{item.from_52w_high}}</td>
           	{% endif %}
           	{% if item.from_52w_low == '52w LOW' %}
           		<td align="center" style="background-color:red">{{item.from_52w_low}}</td>
           	{% else %}
-          		<td align="center">{{item.from_52w_low}}</td>
+          		<td align="center">+{{item.from_52w_low}}</td>
           	{% endif %}
         </tr>
     </tbody>

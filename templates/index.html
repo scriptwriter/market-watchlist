@@ -28,11 +28,19 @@
             <td align="center">{{item.debt}}</td>
             <td align="center">{{item.dividend}}</td>
             <td align="center">{{item.promoter}}</td>
-            <td align="center">{{item.price_to_earnings}}</td>
-            <td align="center">{{item.return_on_equity}}</td>
+            <td align="center" style="background-color:{{item.price_to_earnings_bg}}">{{item.price_to_earnings}}</td>
+            <td align="center" style="background-color:{{item.return_on_equity_bg}}">{{item.return_on_equity}}</td>
             <td align="center">{{item.price_to_sales}}</td>
-            <td align="center">{{item.from_52w_high}}</td>
-            <td align="center">{{item.from_52w_low}}</td>
+            {% if item.from_52w_high == '52w HIGH' %}
+          		<td align="center" style="background-color:green">{{item.from_52w_high}}</td>
+          	{% else %}
+          		<td align="center">{{item.from_52w_high}}</td>
+          	{% endif %}
+          	{% if item.from_52w_low == '52w LOW' %}
+          		<td align="center" style="background-color:red">{{item.from_52w_low}}</td>
+          	{% else %}
+          		<td align="center">{{item.from_52w_low}}</td>
+          	{% endif %}
         </tr>
     </tbody>
 {% endfor %}

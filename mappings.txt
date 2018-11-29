@@ -1,5 +1,6 @@
 {
 	"auto_2w": ["Eicher", "Bajaj", "Hero"],
 	"auto_4w": ["Maruti"],
-	"auto_ancillary": ["Jamna", "Banco", "Minda", "Exide"]
+	"auto_ancillary": ["Jamna", "Banco", "Minda", "Exide"],
+	"bluechips": ["Asian", "Pidilite"]
 }

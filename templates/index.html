@@ -1,0 +1,49 @@
+<html>
+<body>
+<h1>Market Watchlist</h1>
+
+{% for industry in data %}
+<table border="1" class="dataframe">
+    <thead>
+        <tr>
+            <th>stock</th>
+            <th>Market Cap</th>
+            <th>Curr Price</th>
+            <th>Debt</th>
+            <th>Dividend</th>
+            <th>Promiter</th>
+            <th>P/E (3yr,5yr)</th>
+            <th>ROE (3yr, 5yr)</th>
+            <th>P/S</th>
+            <th>-52w High</th>
+            <th>-52w Low</th>
+	      </tr>
+    </thead>
+{% for item in industry %}
+    <tbody>
+        <tr>
+            <td align="left">{{item.stock_name}}</td>
+            <td align="center">{{item.market_cap}}</td>
+            <td align="center">{{item.current_price}}</td>
+            <td align="center">{{item.debt}}</td>
+            <td align="center">{{item.dividend}}</td>
+            <td align="center">{{item.promoter}}</td>
+            <td align="center">{{item.price_to_earnings}}</td>
+            <td align="center">{{item.return_on_equity}}</td>
+            <td align="center">{{item.price_to_sales}}</td>
+            <td align="center">{{item.from_52w_high}}</td>
+            <td align="center">{{item.from_52w_low}}</td>
+        </tr>
+    </tbody>
+{% endfor %}
+</table>
+</br>
+</br>
+{% endfor %}
+</br>
+</br>
+</br>
+<label>Count: {{count}}</label>
+
+</body>
+</html>

@@ -1,0 +1,12 @@
+# HTTP Cookie File downloaded with cookies.txt by Genuinous @genuinous
+# This file can be used by wget, curl, aria2c and other standard compliant tools.
+# Usage Examples:
+#   1) wget -x --load-cookies cookies.txt "https://www.screener.in/company/BAJAJ-AUTO/consolidated/"
+#   2) curl --cookie cookies.txt "https://www.screener.in/company/BAJAJ-AUTO/consolidated/"
+#   3) aria2c --load-cookies cookies.txt "https://www.screener.in/company/BAJAJ-AUTO/consolidated/"
+#
+.screener.in	TRUE	/	FALSE	1546990125	__cfduid	de3bf0a14281dcfa37ce946a940a2e2151515454124
+.screener.in	TRUE	/	FALSE	1606519338	_ga	GA1.2.2099067096.1515454126
+.screener.in	TRUE	/	FALSE	1543533738	_gid	GA1.2.1049977127.1543297357
+www.screener.in	FALSE	/	TRUE	1574896938	csrftoken	jTdjFnwzw8NW4veeXeoYyD9PEmha4S06wE0s1gc0RwiPoVgCWDcnkis0xHbReSKW
+www.screener.in	FALSE	/	TRUE	1545943600	sessionid	22qitdtj74qsztsfgrpmq49v2mfwwdyy

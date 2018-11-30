@@ -1,6 +1,16 @@
 {
 	"auto_2w": ["Eicher", "Bajaj", "Hero"],
-	"auto_4w": ["Maruti"],
+	"auto_4w": ["Maruti", "Ashok", "M & M"],
+	"tyres": ["Oriental", "Balkrishna", "NOCIL", "Phillips"],
 	"auto_ancillary": ["Jamna", "Banco", "Minda", "Exide"],
-	"bluechips": ["Asian", "Pidilite"]
+	"bluechips": ["Asian", "Pidilite"],
+	"electronics": ["Havells", "Whirlpool"],
+	"fmcg": ["Britannia", "Dabur", "Nestle", "Zydus"],
+	"fastfood": ["Jubilant", "Varun"],
+	"materials": ["Cera", "HSIL", "Kajaria", "Pokarna", "Stylam"],
+	"roofing": ["Everest", "Hil"],
+	"utilities": ["Indraprastha", "Mahanagar", "Indian"],
+	"chemicals": ["Bharat", "Bodal", "Nat Peroxide", "Navin", "NGL"],
+	"midcaps": ["VIP", "Bata", "Radico", "Sterlite"],
+	"misc": [ "Accelya", "Ambika", "APL", "CCL", "Garware", "GMM", "Gujarat", "La Opala", "Orient Refr", "Mayur", "NESCO", "Poly", "Sheela", "Vaibhav", "Wonderla"]
 }

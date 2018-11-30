@@ -3,14 +3,16 @@ from jinja2 import Environment, FileSystemLoader
 
 import boto
 from boto.s3.key import Key
+from boto.s3.connection import S3Connection
 import json
 import os
 
 # download cookies.txt using the chrome browser plugin
 
-# download watchlist data from screener passing the cookie file
 WATCHLIST_LOC = '/tmp/watchlist.txt'
 INDEX_PAGE_LOC = '/tmp/index.html'
+S3_BUCKET = 'umarye.com'
+# download watchlist data from screener passing the cookie file
 BASH_CMD = 'curl -s --cookie /Users/amit/Downloads/cookies.txt "https://www.screener.in/watchlist/" >' + WATCHLIST_LOC
 os.system(BASH_CMD)
 
@@ -18,7 +20,8 @@ mappings = json.loads(open("mappings.txt").read())
 creds = json.loads(open("credentials.txt").read())
 names = json.loads(open("names.json").read())
 
-conn = boto.connect_s3(creds["access_key"], creds["secret_key"])
+conn = boto.connect_s3(creds["access_key"], creds["secret_key"],
+                       calling_format=boto.s3.connection.OrdinaryCallingFormat())
 
 ENV = Environment(loader=FileSystemLoader('./templates'))
 template = ENV.get_template('index.html')
@@ -108,13 +111,12 @@ for item in items:
 html = template.render(data=[bluechips, midcaps, fmcg, fastfood, electronics, auto_2w, auto_4w, auto_ancillary, tyres, materials, roofing, utilities, chemicals, misc],
                        count=count)
 
-# print(html)
 
 with open(INDEX_PAGE_LOC, 'w') as fh:
     fh.write(html)
 
 # upload index.html to s3 bucket=market-watchlist
-bucket = conn.lookup('market-watchlist')
+bucket = conn.lookup(S3_BUCKET)
 key = Key(bucket)
 key.name = 'index.html'
 key.set_contents_from_filename(INDEX_PAGE_LOC)

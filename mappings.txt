@@ -11,7 +11,7 @@
 	"materials": ["Cera", "HSIL", "Kajaria", "Pokarna", "Stylam"],
 	"roofing": ["Everest", "Hil"],
 	"utilities": ["Indraprastha", "Mahanagar", "Indian"],
-	"chemicals": ["Bharat", "Bodal", "Nat Peroxide", "Navin", "NGL"],
+	"chemicals": ["Bharat", "Bodal", "Nat Peroxide", "Navin", "NGL", "Ultramarine"],
 	"midcaps": ["VIP", "Bata", "Sterlite"],
 	"misc": [ "Accelya", "Ambika", "APL", "CCL", "Garware", "GMM", "Gujarat", "La Opala", "Orient Refr", "Mayur", "NESCO", "Poly", "Sheela", "Vaibhav", "Wonderla"]
 }

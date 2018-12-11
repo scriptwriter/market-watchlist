@@ -7,6 +7,7 @@ from boto.s3.connection import S3Connection
 import json
 import os
 import requests
+import sys
 
 # download cookies.txt using the chrome browser plugin
 
@@ -37,6 +38,7 @@ if len(items) > 0:
     items.pop(0)
 else:
     print("Its time to download the cookies again.")
+    sys.exit(0)
 
 auto_2w, auto_4w, auto_ancillary, alcohol, bluechips, chemicals, electronics, fmcg, fastfood, materials, midcaps, misc, roofing, tyres, utilities = [
 ], [], [], [], [], [], [], [], [], [], [], [], [], [], []

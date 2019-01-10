@@ -3,61 +3,65 @@
 <h1>Market Watchlist</h1>
 
 {% for industry in data %}
-<table border="1" class="dataframe">
-    <thead>
-        <tr>
-            <th>stock</th>
-            <th>Market Cap</th>
-            <th>Curr Price</th>
-            <th>Debt</th>
-            <th>Dividend</th>
-            <th>Promoter</th>
-            <th>P/E (3yr, 5yr)</th>
-            <th>ROE (3yr, 5yr)</th>
-            <th>| P/S |</th>
-            <th>| PEG |</th>
-            <th>| OPM |</th>
-            <th>Rev\nPAT %chg(-q1,2,3,4)</th>
-            <th>-52w High</th>
-            <th>-52w Low</th>
-	      </tr>
-    </thead>
-{% for item in industry %}
-    <tbody>
-        <tr>
-            <td align="left">{{item.stock_name}}</td>
-            <td align="center">{{item.market_cap}}</td>
-            <td align="center">{{item.current_price}}</td>
-            <td align="center">{{item.debt}}</td>
-            <td align="center">{{item.dividend}}</td>
-            <td align="center">{{item.promoter}}</td>
-            <td align="center" style="background-color:{{item.price_to_earnings_bg}}">{{item.price_to_earnings}}</td>
-            <td align="center" style="background-color:{{item.return_on_equity_bg}}">{{item.return_on_equity}}</td>
-            <td align="center">{{item.price_to_sales}}</td>
-            <td align="center">{{item.peg}}</td>
-            <td align="center">{{item.opm}}</td>
-            <td align="center" style="background-color:{{item.qtr_growth_bg}}">{{item.qtr_sales_growth}}<br/>{{item.qtr_profit_growth}}</td>
-            {% if item.from_52w_high == '52w HIGH' %}
-          		<td align="center" style="background-color:green">{{item.from_52w_high}}</td>
-          	{% else %}
-          		<td align="center">-{{item.from_52w_high}}</td>
-          	{% endif %}
-          	{% if item.from_52w_low == '52w LOW' %}
-          		<td align="center" style="background-color:red">{{item.from_52w_low}}</td>
-          	{% else %}
-          		<td align="center">+{{item.from_52w_low}}</td>
-          	{% endif %}
-        </tr>
-    </tbody>
+  {% if industry[0] %}
+  <table border="1" class="dataframe">
+      <thead>
+          <tr>
+              <th>stock</th>
+              <th>Market Cap</th>
+              <th>Curr Price</th>
+              <th>Debt</th>
+              <th>Dividend</th>
+              <th>Promoter</th>
+              <th>P/E (3yr, 5yr)</th>
+              <th>ROE (3yr, 5yr)</th>
+              <th>| P/S |</th>
+              <th>| PEG |</th>
+              <th>| OPM |</th>
+              <th>Rev\nPAT %chg(-q1,2,3,4)</th>
+              <th>-52w High</th>
+              <th>-52w Low</th>
+  	      </tr>
+      </thead>
+  {% for item in industry %}
+      <tbody>
+          <tr>
+              <td align="left">{{item.stock_name}}</td>
+              <td align="center">{{item.market_cap}}</td>
+              <td align="center">{{item.current_price}}</td>
+              <td align="center">{{item.debt}}</td>
+              <td align="center">{{item.dividend}}</td>
+              <td align="center">{{item.promoter}}</td>
+              <td align="center" style="background-color:{{item.price_to_earnings_bg}}">{{item.price_to_earnings}}</td>
+              <td align="center" style="background-color:{{item.return_on_equity_bg}}">{{item.return_on_equity}}</td>
+              <td align="center">{{item.price_to_sales}}</td>
+              <td align="center">{{item.peg}}</td>
+              <td align="center">{{item.opm}}</td>
+              <td align="center" style="background-color:{{item.qtr_growth_bg}}">{{item.qtr_sales_growth}}<br/>{{item.qtr_profit_growth}}</td>
+              {% if item.from_52w_high == '52w HIGH' %}
+            		<td align="center" style="background-color:green">{{item.from_52w_high}}</td>
+            	{% else %}
+            		<td align="center">-{{item.from_52w_high}}</td>
+            	{% endif %}
+            	{% if item.from_52w_low == '52w LOW' %}
+            		<td align="center" style="background-color:red">{{item.from_52w_low}}</td>
+            	{% else %}
+            		<td align="center">+{{item.from_52w_low}}</td>
+            	{% endif %}
+          </tr>
+      </tbody>
+  {% endfor %}
+  </table>
+  </br>
+  </br>
+  {% endif %}
 {% endfor %}
-</table>
-</br>
-</br>
-{% endfor %}
 </br>
 </br>
 </br>
-<label>Count: {{count}}</label>
+<label>Total Count: {{count}}</label></br>
+<label>52w High Count: {{count_52w_high}}</label></br>
+<label>52w Low Count: {{count_52w_low}}</label></br>
 
 </body>
 </html>

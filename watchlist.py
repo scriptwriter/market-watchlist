@@ -10,15 +10,24 @@ import requests
 import sys
 
 # download cookies.txt using the chrome browser plugin
+WATCHLIST_URL = 'https://www.screener.in/watchlist/'
+if len(sys.argv) > 1 and sys.argv[1] == 'portfolio':
+    WATCHLIST_URL = 'https://www.screener.in/watchlist/2798/'
+
+# print(len(sys.argv))
+# print(WATCHLIST_URL)
+# sys.exit(1)
+
 
 WATCHLIST_LOC = '/tmp/watchlist.txt'
 INDEX_PAGE_LOC = '/tmp/index.html'
 S3_BUCKET = 'umarye.com'
 SALES_NUMBERS_POS = (14, 17, 20, 23)
 PROFIT_NUMBERS_POS = (122, 125, 128, 131)
+HIGH_LOW_DIVIATION_PERC = 4
 
 # download watchlist data from screener passing the cookie file
-BASH_CMD = 'curl -s --cookie /Users/amit/Downloads/cookies.txt "https://www.screener.in/watchlist/" >' + WATCHLIST_LOC
+BASH_CMD = 'curl -s --cookie /Users/amit/Downloads/cookies.txt ' + WATCHLIST_URL + '>' + WATCHLIST_LOC
 os.system(BASH_CMD)
 
 mappings = json.loads(open("mappings.txt").read())
@@ -40,9 +49,13 @@ else:
     print("Its time to download the cookies again.")
     sys.exit(0)
 
-auto_2w, auto_4w, auto_ancillary, alcohol, bluechips, chemicals, electronics, fmcg, fastfood, materials, midcaps, misc, roofing, tyres, utilities = [
-], [], [], [], [], [], [], [], [], [], [], [], [], [], []
+auto_2w, auto_4w, auto_ancillary, alcohol, bluechips, chemicals, electronics, fmcg, fastfood, materials, midcaps, misc, roofing, tyres, utilities, diagonistic = [
+], [], [], [], [], [], [], [], [], [], [], [], [], [], [], []
+
+
 count = 0
+count_52w_high = 0
+count_52w_low = 0
 
 
 def extract_qtr_numbers(soup, result_type='tblQtyCons'):
@@ -76,6 +89,7 @@ for item in items:
         stock_name = elements[1].text.strip().split(" ")[0]
         if stock_name in names:
             stock_name = names[stock_name]
+        print(stock_name)
         price_to_earnings_bg = "white"
         return_on_equity_bg = "white"
         price_to_earnings = convert_to_int(elements[7].text.strip())
@@ -84,13 +98,22 @@ for item in items:
         return_on_equity = convert_to_int(elements[11].text.strip())
         return_on_equity_3y = convert_to_int(elements[12].text.strip())
         return_on_equity_5y = convert_to_int(elements[13].text.strip())
-        if price_to_earnings <= min(price_to_earnings_3y, price_to_earnings_5y):
-            price_to_earnings_bg = "yellow"
-        if return_on_equity >= max(return_on_equity_3y, return_on_equity_5y):
-            return_on_equity_bg = "yellow"
+        try:
+            if price_to_earnings <= min(price_to_earnings_3y, price_to_earnings_5y):
+                price_to_earnings_bg = "yellow"
+            if return_on_equity >= max(return_on_equity_3y, return_on_equity_5y):
+                return_on_equity_bg = "yellow"
+        except:
+            pass
 
         from_52w_high = float(elements[14].text.strip())
         from_52w_low = float(elements[15].text.strip())
+        if from_52w_high <= HIGH_LOW_DIVIATION_PERC:
+            from_52w_high = '52w HIGH'
+            count_52w_high += 1
+        if from_52w_low <= HIGH_LOW_DIVIATION_PERC:
+            from_52w_low = '52w LOW'
+            count_52w_low += 1
 
         # extract qtr nums from ratestar
         qtr_sales_growth = []
@@ -120,8 +143,8 @@ for item in items:
                        return_on_equity=str(return_on_equity) +
                        ' ('+str(return_on_equity_3y)+', ' + str(return_on_equity_5y)+')',
                        return_on_equity_bg=return_on_equity_bg,
-                       from_52w_high='52w HIGH' if from_52w_high <= 2 else from_52w_high,
-                       from_52w_low='52w LOW' if from_52w_low <= 2 else from_52w_low,
+                       from_52w_high=from_52w_high,
+                       from_52w_low=from_52w_low,
                        peg=elements[16].text.strip(),
                        opm=elements[17].text.strip(),
                        qtr_sales_growth=qtr_sales_growth,
@@ -159,10 +182,12 @@ for item in items:
             midcaps.append(an_item)
         elif stock_name in mappings["alcohol"]:
             alcohol.append(an_item)
+        elif stock_name in mappings["diagonistic"]:
+            diagonistic.append(an_item)
         count += 1
 
-html = template.render(data=[bluechips, midcaps, fmcg, fastfood, alcohol, electronics, auto_2w, auto_4w, auto_ancillary, tyres, materials, roofing, utilities, chemicals, misc],
-                       count=count)
+html = template.render(data=[bluechips, midcaps, fmcg, fastfood, alcohol, electronics, auto_2w, auto_4w, auto_ancillary, tyres, materials, roofing, utilities, chemicals, diagonistic, misc],
+                       count=count, count_52w_high=count_52w_high, count_52w_low=count_52w_low)
 
 
 with open(INDEX_PAGE_LOC, 'w') as fh:

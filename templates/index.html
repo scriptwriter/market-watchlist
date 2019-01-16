@@ -21,6 +21,7 @@
               <th>Rev\nPAT %chg(-q1,2,3,4)</th>
               <th>-52w High</th>
               <th>-52w Low</th>
+              <th>Funds%</th>
   	      </tr>
       </thead>
   {% for item in industry %}
@@ -48,6 +49,7 @@
             	{% else %}
             		<td align="center">+{{item.from_52w_low}}</td>
             	{% endif %}
+              <td align="center">{{item.funds_perc}}</td>
           </tr>
       </tbody>
   {% endfor %}

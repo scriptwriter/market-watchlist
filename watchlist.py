@@ -14,17 +14,13 @@ WATCHLIST_URL = 'https://www.screener.in/watchlist/'
 if len(sys.argv) > 1 and sys.argv[1] == 'portfolio':
     WATCHLIST_URL = 'https://www.screener.in/watchlist/2798/'
 
-# print(len(sys.argv))
-# print(WATCHLIST_URL)
-# sys.exit(1)
-
 
 WATCHLIST_LOC = '/tmp/watchlist.txt'
 INDEX_PAGE_LOC = '/tmp/index.html'
 S3_BUCKET = 'umarye.com'
 SALES_NUMBERS_POS = (14, 17, 20, 23)
 PROFIT_NUMBERS_POS = (122, 125, 128, 131)
-HIGH_LOW_DIVIATION_PERC = 4
+HIGH_LOW_DIVIATION_PERC = 3
 
 # download watchlist data from screener passing the cookie file
 BASH_CMD = 'curl -s --cookie /Users/amit/Downloads/cookies.txt ' + WATCHLIST_URL + '>' + WATCHLIST_LOC
@@ -80,7 +76,10 @@ def extract_qtr_numbers(soup, result_type='tblQtyCons'):
 
 
 def convert_to_int(val):
-    return int(float(val))
+    try:
+        return int(float(val))
+    except:
+        return " NA "
 
 
 for item in items:
@@ -98,6 +97,8 @@ for item in items:
         return_on_equity = convert_to_int(elements[11].text.strip())
         return_on_equity_3y = convert_to_int(elements[12].text.strip())
         return_on_equity_5y = convert_to_int(elements[13].text.strip())
+        funds_perc = convert_to_int(elements[18].text.strip())
+
         try:
             if price_to_earnings <= min(price_to_earnings_3y, price_to_earnings_5y):
                 price_to_earnings_bg = "yellow"
@@ -139,7 +140,7 @@ for item in items:
                        price_to_earnings=str(price_to_earnings) +
                        ' ('+str(price_to_earnings_3y)+', ' + str(price_to_earnings_5y)+' )',
                        price_to_earnings_bg=price_to_earnings_bg,
-                       price_to_sales=elements[10].text.strip(),
+                       price_to_sales=elements[13].text.strip(),
                        return_on_equity=str(return_on_equity) +
                        ' ('+str(return_on_equity_3y)+', ' + str(return_on_equity_5y)+')',
                        return_on_equity_bg=return_on_equity_bg,
@@ -149,7 +150,8 @@ for item in items:
                        opm=elements[17].text.strip(),
                        qtr_sales_growth=qtr_sales_growth,
                        qtr_profit_growth=qtr_profit_growth,
-                       qtr_growth_bg=qtr_growth_bg
+                       qtr_growth_bg=qtr_growth_bg,
+                       funds_perc=funds_perc
                        )
 
         if stock_name in mappings["auto_2w"]:

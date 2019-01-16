@@ -5,14 +5,14 @@
 	"auto_ancillary": ["Jamna", "Banco", "Minda", "Exide"],
 	"bluechips": ["Asian", "Pidilite"],
 	"electronics": ["Havells", "Whirlpool"],
-	"fmcg": ["Britannia", "Dabur", "Nestle", "Zydus"],
+	"fmcg": ["Britannia", "Dabur", "Nestle", "Zydus", "GlaxoSmithkline"],
 	"fastfood": ["Jubilant", "Varun"],
 	"alcohol": ["Radico", "Assoc.Alcohols", "United", "Globus"],
 	"materials": ["Cera", "HSIL", "Kajaria", "Pokarna", "Stylam"],
 	"roofing": ["Everest", "Hil"],
 	"utilities": ["Indraprastha", "Mahanagar", "Guj.St.Petronet", "Indian"],
-	"chemicals": ["Bharat", "Bodal", "Nat Peroxide", "Navin", "NGL", "Ultramarine"],
+	"chemicals": ["Aarti","Bharat", "Bodal", "Nat Peroxide", "Navin", "NGL", "Ultramarine"],
 	"midcaps": ["VIP", "Bata", "Sterlite"],
-	"diagonistic": ["Thyrocare", "Dr", "Poly"],
+	"diagonistic": ["Apollo", "Thyrocare", "Dr", "Poly"],
 	"misc": [ "Accelya", "Ambika", "APL", "CCL", "Garware", "GMM", "Gujarat", "La Opala", "Orient Refr", "Mayur", "NESCO", "Sheela", "Vaibhav", "Yash", "Wonderla"]
 }

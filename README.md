@@ -12,18 +12,18 @@ Silver - $SLV<br/>
 Uranium - $URA<br/>
 
 
-CURRENCIES<br/>
+<b>CURRENCIES</b><br/>
 Long  Dollar - $UUP<br/>
 Short Dollar - $UDN<br/>
 
 
-COUNTRY INDEXES
+<b>COUNTRY INDEXES</b><br/>
 Short S&P - $SH<br/>
 Short Russel 2000 - $RWM<br/>
 India - INDA<br/>
 
 
-OTHERS<br/>
+<b>OTHERS</b><br/>
 Marijuana - $MJ<br/> 
 US Home Construction -  $ITB<br/>
 Water - $PHO<br/>

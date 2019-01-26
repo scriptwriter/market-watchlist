@@ -6,25 +6,25 @@
 2. Take macro calls -  index's, minerals, currencies. Not individual stocks. (except companies going out of business)
 
 # Things to track globally
-MINERALS 
-Gold - $GLD, $IAU
-Silver - $SLV
-Uranium - $URA
+MINERALS . 
+Gold - $GLD, $IAU . 
+Silver - $SLV . 
+Uranium - $URA . 
 
 
-CURRENCIES
-Long  Dollar - $UUP
-Short Dollar - $UDN
+CURRENCIES 
+Long  Dollar - $UUP . 
+Short Dollar - $UDN . 
 
 
 COUNTRY INDEXES
-Short S&P - $SH
-Short Russel 2000 - $RWM
-India - INDA
+Short S&P - $SH . 
+Short Russel 2000 - $RWM . 
+India - INDA . 
 
 
-OTHERS
-Marijuana - $MJ
-US Home Construction -  $ITB
-Water - $PHO
+OTHERS . 
+Marijuana - $MJ . 
+US Home Construction -  $ITB . 
+Water - $PHO . 
 US Oil Companies - $XOP

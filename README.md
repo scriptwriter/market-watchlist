@@ -2,8 +2,8 @@
 - You are good at predicting long term trends. But Market can remain irrational longer than you can remain solvent.
 
 % Process %
-1. Take long term expiry - 1 or 2 years down the line.
-2. Take macro calls -  index's, minerals, currencies. Not individual stocks. (except companies going out of business)
+1. Take long term expiry - 1 or 2 years down the line.<br/>
+2. Take macro calls -  index's, minerals, currencies. Not individual stocks. (except companies going out of business)<br/>
 
 # Things to track globally
 <b>MINERALS</b><br/>

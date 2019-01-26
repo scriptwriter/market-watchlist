@@ -13,8 +13,8 @@ Uranium - $URA
 
 
 CURRENCIES
-Long  Dollar - $UUP\n
-Short Dollar - $UDN\n
+Long  Dollar - $UUP
+Short Dollar - $UDN
 
 
 COUNTRY INDEXES

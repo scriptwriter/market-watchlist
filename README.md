@@ -18,8 +18,10 @@ Short Dollar - $UDN<br/>
 
 
 <b>COUNTRY INDEXES</b><br/>
+Long  S&P - $SPY<br/>
 Short S&P - $SH<br/>
-Short Russel 2000 - $RWM<br/>
+Long  Russel - $IWM<br/>
+Short Russel - $RWM<br/>
 India - INDA<br/>
 
 
